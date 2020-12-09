@@ -11,20 +11,24 @@ def get_numbers_list(file) -> [int]:
 
 def sum_in_cycle(cycle_range: int, l: [int], num_ind: int) -> bool:
     searched_sum = l[num_ind]
+    possibilities = set(l[num_ind - cycle_range:num_ind])
+    for p in possibilities:
+        if searched_sum - p in possibilities and searched_sum - p != searched_sum:
+            return True
+    return False
+
+
+def sum_in_cycle2(cycle_range: int, l: [int], num_ind: int) -> bool:
+    searched_sum = l[num_ind]
     possibilities = sorted(l[num_ind - cycle_range:num_ind])
-    all_checked = False
-    i, j = 0, 1
-    while not all_checked:
+    i, j = 0, len(possibilities) - 1
+    for n in possibilities:
         if possibilities[i] + possibilities[j] == searched_sum:
             return True
-        elif (possibilities[i] + possibilities[j] > searched_sum and i <= len(possibilities) - 2) or (
-                possibilities[i] + possibilities[j] < searched_sum and j >= len(possibilities) - 1):
+        elif possibilities[i] + possibilities[j] < searched_sum:
             i += 1
-            j = 0
-        elif possibilities[i] + possibilities[j] < searched_sum and j < len(possibilities) - 1:
-            j += 1
-        else:
-            all_checked = True
+        elif possibilities[i] + possibilities[j] > searched_sum:
+            j -= 1
     return False
 
 
