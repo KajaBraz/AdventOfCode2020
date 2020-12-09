@@ -1,3 +1,6 @@
+"""
+https://adventofcode.com/2020/day/8
+"""
 from day4 import get_list
 
 

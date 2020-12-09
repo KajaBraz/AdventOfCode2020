@@ -1,3 +1,6 @@
+"""
+https://adventofcode.com/2020/day/6
+"""
 from day4 import get_list, divide_passwords
 
 

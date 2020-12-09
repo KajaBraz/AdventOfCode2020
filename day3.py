@@ -1,3 +1,6 @@
+"""
+https://adventofcode.com/2020/day/3
+"""
 def get_list(file):
     with open(file) as f:
         lines = [line.rstrip() for line in f]
