@@ -37,8 +37,8 @@ def find_outer(colour: str, bags: dict):
 
 
 def count_inner(colour: str, bags: {str: [(int, str)]}) -> [int]:
-    if len(bags[colour]) == 0: return [0]
-    return [[c[0]] + c[0] * count_inner(c[1], bags) for c in bags[colour]]
+    if len(bags[colour]) == 0: return 0
+    return sum([c[0] + c[0] * count_inner(c[1], bags) for c in bags[colour]])
 
 
 if __name__ == '__main__':
@@ -49,11 +49,9 @@ if __name__ == '__main__':
     bags_colours = dict_only_colours(bags_dict)
     print(bags_colours)
     check_colour = find_outer('shiny gold', bags_colours)
-    print(check_colour)
     fl = flatten(check_colour)
     outer_colours = set(fl)
     print(outer_colours)
     print(len(outer_colours))
-    inner_count = flatten(count_inner('shiny gold', bags_dict))
+    inner_count = count_inner('shiny gold', bags_dict)
     print(inner_count)
-    print(sum(inner_count))
