@@ -1,3 +1,6 @@
+"""
+https://adventofcode.com/2020/day/10
+"""
 from day9 import get_numbers_list
 
 
@@ -30,7 +33,8 @@ def count_connections(sorted_l: [int], results) -> int:
     results[tuple(sorted_l)] = r
     return r
 
-#slow version
+
+# slow version
 def count_connections2(sorted_l: [int]) -> int:
     if len(sorted_l) <= 2:
         return 1
